@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div style="padding: 16px;">
+  <h2>Olá</h2>
+  <p>Clique nos botões :</p>
+
+  <div id="myTab" style="margin-bottom: 16px;">
+    <button class="tablink" onclick="openPage('Home', this, 'blue')" id="defaultOpen">Início</button>
+    <button class="tablink" onclick="openPage('Calculator', this, 'purple')">Calculadora</button>
+  </div>
+
+  <div id='Home' class='tabcontent'>
+    <h3>Inicio</h3>
+    <p>O lar é onde o coração está...</p>
+  </div>
+
+  <!-- ... Outros conteúdos de abas ... -->
+
+  <div id='Calculator' class='tabcontent'>
+    <h3>Calculadora</h3>
+    <input type="number" id="num1" placeholder="Número 1">
+    <input type="number" id="num2" placeholder="Número 2">
+    <button onclick="calculate()">Calcular</button>
+    <p id="result"></p>
+  </div>
+
+</div>
+
+<script>
+function openPage(pageName, elmnt, color) {
+  // Esconde todos os elementos com a classe "tabcontent" por padrão
+  var i, tabcontent;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Remove a cor de fundo de todos os botões/tablinks
+  var btns = document.getElementsByClassName("tablink");
+  for (i = 0; i < btns.length; i++) {
+    btns[i].style.backgroundColor = "";
+  }
+
+  // Mostra o conteúdo da aba específica
+  document.getElementById(pageName).style.display = "block";
+
+  // Adiciona a cor específica ao botão usado para abrir o conteúdo da aba
+  elmnt.style.backgroundColor = color;
+}
+
+function calculate() {
+  var num1 = document.getElementById('num1').value;
+  var num2 = document.getElementById('num2').value;
+  var result = Number(num1) + Number(num2);
+  document.getElementById('result').innerHTML = "Resultado: " + result;
+}
+// ... Outras funções JavaScript ...
+</script>
+
+</body>
+</html>
